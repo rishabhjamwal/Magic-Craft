@@ -7,8 +7,8 @@ export const MANTLE: Network[] = [
     type: "mainnet",
     rpcUrls: [
       "https://rpc.mantle.xyz",
-      "https://rpc.ankr.com/mantle",
       "https://mantle.drpc.org",
+      "https://rpc.ankr.com/mantle",
       "https://mantle.publicnode.com",
       "https://mantle-mainnet.public.blastapi.io",
     ],

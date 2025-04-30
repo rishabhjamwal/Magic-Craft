@@ -7,8 +7,8 @@ export const MOONBEAM: Network[] = [
     type: "mainnet",
     rpcUrls: [
       "https://rpc.api.moonbeam.network",
-      "https://rpc.ankr.com/moonbeam",
       "https://moonbeam.public.blastapi.io",
+      "https://rpc.ankr.com/moonbeam",
     ],
     chainTag: "moonbeam",
     name: "Moonbeam",

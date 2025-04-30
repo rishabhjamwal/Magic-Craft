@@ -7,9 +7,9 @@ export const GNOSIS: Network[] = [
     type: "mainnet",
     rpcUrls: [
       "https://rpc.gnosischain.com",
-      "https://rpc.ankr.com/gnosis",
-      "https://gnosis.publicnode.com",
       "https://1rpc.io/gnosis",
+      "https://gnosis.publicnode.com",
+      "https://rpc.ankr.com/gnosis",
       "https://endpoints.omniatech.io/v1/gnosis/mainnet/public",
       "https://rpc.gnosis.gateway.fm",
       "https://gnosis-pokt.nodies.app",

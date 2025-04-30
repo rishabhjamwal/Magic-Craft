@@ -6,10 +6,10 @@ export const FANTOM: Network[] = [
     chainId: 250,
     type: "mainnet",
     rpcUrls: [
-      "https://rpc.ankr.com/fantom",
       "https://rpcapi.fantom.network",
       "https://1rpc.io/ftm",
       "https://rpc.ftm.tools",
+      "https://rpc.ankr.com/fantom",
       "https://rpc.fantom.network",
       "https://fantom-mainnet.public.blastapi.io",
     ],
