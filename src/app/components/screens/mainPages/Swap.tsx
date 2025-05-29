@@ -31,8 +31,8 @@ import {
 } from "app/atoms";
 
 const resources = [
-  "https://cloudflare-ipfs.com/ipns/tokens.uniswap.org",
-  "https://cloudflare-ipfs.com/ipns/extendedtokens.uniswap.org",
+  "https://ipfs.io/ipns/tokens.uniswap.org",
+  "https://ipfs.io/ipns/extendedtokens.uniswap.org",
 ];
 
 const getVerifiedTokens = memoize(

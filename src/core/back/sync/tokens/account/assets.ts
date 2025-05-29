@@ -217,16 +217,62 @@ export const syncAccountAssets = memoize(
 
 export const fetchAccountTokens = memoize(
   (chainId: number, accountAddress: string) =>
-    fetchUxAccountTokens(chainId, accountAddress),
+    fetchKxAccountTokens(chainId, accountAddress).catch((err) => {
+      if (!err?.message?.includes("Chain not supported")) {
+        console.warn("Using another indexer", err);
+      }
+
+      return fetchUxAccountTokens(chainId, accountAddress);
+    }),
   {
     cacheKey: (args) => args.join("_"),
     maxAge: 10_000, // 10 sec
   },
 );
-// .catch((err) => {
-//   console.warn("Using another indexer", err);
-//   return fetchCxAccountTokens(chainId, accountAddress, TokenType.Asset);
-// });
+
+async function fetchKxAccountTokens(chainId: number, accountAddress: string) {
+  if (!K_INDEXER_CHAINS.has(chainId)) {
+    throw new Error("Chain not supported");
+  }
+
+  return indexerApi
+    .get(`/k/assets`, {
+      params: {
+        _authAddress: accountAddress,
+        chainId,
+        accountAddress,
+      },
+    })
+    .then((r) => {
+      const data = r.data;
+      if ("error" in data) {
+        throw new Error(data.error.message);
+      }
+
+      const assets: CxToken[] = [];
+
+      for (const item of data.result.assets) {
+        const asset: CxToken = {
+          native_token: item.tokenType === "NATIVE",
+          type: item.tokenType,
+          contract_address: item.contractAddress,
+          contract_name: item.tokenName || "",
+          contract_ticker_symbol: item.tokenSymbol || "",
+          contract_decimals: item.tokenDecimals || 18,
+          logo_url: item.thumbnail || "",
+          balance: item.balanceRawInteger,
+          quote_rate: item.tokenPrice || "0",
+          quote: item.balanceUsd || "0",
+          is_spam: false,
+          balance_24h: item.balanceUsd24h || "0",
+        };
+
+        assets.push(asset);
+      }
+
+      return assets;
+    });
+}
 
 async function fetchUxAccountTokens(chainId: number, accountAddress: string) {
   if (!U_INDEXER_CHAINS.has(chainId)) {
@@ -247,3 +293,5 @@ const U_INDEXER_CHAINS = new Set([
   1, 56, 137, 42220, 8217, 25, 106, 42161, 43114, 50, 32769, 250, 122,
   1313161554, 1088, 5000, 1101, 1284, 10, 8453, 34443, 169,
 ]);
+
+const K_INDEXER_CHAINS = new Set([1, 56, 137, 8453]);
