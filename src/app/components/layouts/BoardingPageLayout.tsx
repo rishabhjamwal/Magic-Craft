@@ -6,7 +6,7 @@ import { pageAtom } from "app/atoms";
 import ContentContainer from "app/components/layouts/ContentContainer";
 import Button from "app/components/elements/Button";
 import BackButton from "app/components/elements/BackButton";
-import { ReactComponent as WigwamIcon } from "app/icons/WigwamTitle.svg";
+import { ReactComponent as MagicCraftIcon } from "app/icons/MagicCraftTitle.svg";
 import { ReactComponent as ArrowLeftLongIcon } from "app/icons/arrow-left-long.svg";
 // import WelcomeBgImage from "app/images/welcome-bg.jpg";
 // import WelcomeTreeLeftImage from "app/images/welcome-tree-left.png";
@@ -81,7 +81,7 @@ const BoardingPageLayout: FC<PropsWithChildren<BoardingPageLayoutProps>> = ({
           "w-full flex justify-center items-center",
         )}
       >
-        <WigwamIcon className={classNames("h-[2rem]", "w-auto mr-3")} />
+        <MagicCraftIcon className={classNames("h-[2rem]", "w-auto mr-3")} />
       </div>
     ) : (
       <>

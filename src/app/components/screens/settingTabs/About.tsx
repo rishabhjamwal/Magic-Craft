@@ -8,19 +8,21 @@ import { ReactComponent as MediumIcon } from "app/icons/medium.svg";
 import { ReactComponent as DiscordIcon } from "app/icons/discord.svg";
 
 import Separator from "app/components/elements/Seperator";
-import { ReactComponent as WigwamLogo } from "app/icons/Wigwam.svg";
+import { ReactComponent as MagicCraftLogo } from "app/icons/MagicCraft.svg";
 
 const About: FC = () => {
   return (
     <div className="flex flex-col items-start pt-3">
       <div className="flex items-center">
-        <WigwamLogo className="w-[3.25rem] h-auto" />
-        <span className="text-2xl font-black ml-4">Wigwam</span>
+        <MagicCraftLogo className="w-[3.25rem] h-auto" />
+        <span className="text-2xl font-black ml-4 magiccraft-text-gold">
+          Magic Craft
+        </span>
       </div>
 
       <p className="text-brand-font text-sm mt-6 mb-8 max-w-[20rem]">
-        Wigwam lets you explore DeFi and NFTs in a safer, faster and more modern
-        way.
+        Magic Craft lets you explore DeFi and NFTs with the power of ancient
+        magic, faster and more enchanted than ever.
       </p>
 
       <AboutHeader>Version</AboutHeader>

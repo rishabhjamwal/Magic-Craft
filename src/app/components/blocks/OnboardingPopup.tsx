@@ -9,7 +9,7 @@ import Button from "app/components/elements/Button";
 import OnboardingFirstImage from "app/images/onboarding_first.png";
 import OnboardingSecondImage from "app/images/onboarding_second.png";
 import OnboardingThirdImage from "app/images/onboarding_third.png";
-import WigwamLogoImage from "app/images/wigwam.png";
+import { ReactComponent as MagicCraftIcon } from "app/icons/MagicCraft.svg";
 
 type TStepContent = {
   title: string;
@@ -21,19 +21,19 @@ const stepsContent: TStepContent[] = [
   {
     title: "Trade and explore",
     description:
-      "Instantly trade over 2,500 tokens, connect with hundreds of dApps, and create or sell NFTs in the Web3 world, all through Wigwam",
+      "Instantly trade over 2,500 tokens, connect with hundreds of dApps, and create or sell NFTs in the Web3 world, all through Magic Craft",
     image: OnboardingFirstImage,
   },
   {
     title: "Easy access",
     description:
-      "If you can't find a Wigwam button when connecting to a dApp, you can effortlessly connect to Wigwam using MetaMask button instead, as this option is automatically available",
+      "If you can't find a Magic Craft button when connecting to a dApp, you can effortlessly connect to Magic Craft using MetaMask button instead, as this option is automatically available",
     image: OnboardingSecondImage,
   },
   {
     title: "Always near",
     description:
-      "Pin the Wigwam extension on your browser toolbar for fast access to your tokens and to navigate the Web3 space more efficiently",
+      "Pin the Magic Craft extension on your browser toolbar for fast access to your tokens and to navigate the Web3 space more efficiently",
     image: OnboardingThirdImage,
   },
 ];
@@ -67,13 +67,9 @@ const OnBoardingContent: FC = () => {
     >
       <ScrollAreaContainer className="w-full h-full flex flex-col relative max-w-7xl">
         <section className="mb-6 flex flex-col items-center">
-          <img
-            className="mb-6 w-11 h-11 rounded-md"
-            src={WigwamLogoImage}
-            alt="wigwam_logo"
-          />
+          <MagicCraftIcon className="mb-6 w-11 h-11" />
           <h3 className="mb-6 text-[1.75rem] font-bold text-center">
-            Welcome to Wigwam:
+            Welcome to Magic Craft:
             <br />
             Your Gateway to the Web3 World!
           </h3>

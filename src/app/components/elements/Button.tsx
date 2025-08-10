@@ -137,9 +137,10 @@ const Button = forwardRef<HTMLElement, ButtonProps>(
       !(theme === "primary" || theme === "primary-reverse") &&
         "text-brand-light",
       "text-base font-bold",
-      theme === "primary" && "bg-brand-redone text-brand-darkaccent bg-opacity",
+      theme === "primary" &&
+        "magiccraft-button bg-brand-redone text-brand-darkaccent",
       theme === "primary-reverse" &&
-        "bg-brand-redone text-brand-darkaccent bg-opacity shadow-buttonaccent",
+        "magiccraft-button bg-brand-redone text-brand-darkaccent shadow-buttonaccent",
       theme === "secondary" && "bg-brand-main bg-opacity-10",
       "rounded-[.375rem]",
       "inline-flex justify-center",

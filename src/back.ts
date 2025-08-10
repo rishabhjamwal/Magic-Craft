@@ -24,14 +24,12 @@ import {
 setupArgon2Impl();
 startInpageContentScript();
 
-// Init profiles
-// - Create default profile if it doesn't exist
-// - Open new tab when profile changed (after refresh)
-initProfiles();
-openIfWasRestarted();
+initProfiles().then(() => {
+  // Merge default data to the device storage
+  setupFixtures();
+});
 
-// Merge default data to the device storage
-setupFixtures();
+openIfWasRestarted();
 
 // Start background server
 // It starts Porter server to communicate with UI & content scripts

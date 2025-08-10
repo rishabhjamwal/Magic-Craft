@@ -1,132 +1,218 @@
-# Wigwam - Web3 Wallet
+# Magic Craft - Web3 Wallet
 
-### https://wigwam.app
+### A mystical Web3 wallet extension for Ethereum, Polygon, BNB Smart Chain, Arbitrum, and all EVM networks.
 
-A browser extension Web3 wallet designed for Ethereum, Polygon, BNB Smart Chain, Arbitrum, and all EVM networks. Reliable and secure solution for managing accounts and crypto keys, exploring DeFi, NFTs, and GameFi.
+**Magic Craft** is a browser extension Web3 wallet designed for secure cryptocurrency management, DeFi exploration, and NFT trading. Built with ancient magical themes and modern security practices.
 
-![Wigwam](./docs/banner.png)
+![Magic Craft](./docs/banner.png)
 
 **Table of Contents**
 
 - [Features](#features)
-- [Documentation](#documentation)
-- [Build from Source](#build-from-source)
-- [Useful Scripts](#useful-scripts)
-- [Contributions](#contributions)
+- [Installation & Setup](#installation--setup)
+- [Development](#development)
+- [Security](#security)
+- [Contributing](#contributing)
 - [Support](#support)
 
 ## Features
 
-### Self-Custodial
+### 🎭 Mystical Design
 
-- 🤲 User-centric approach - the keys belong to the user and are securely stored on their device, encrypted and inaccessible to anyone else.
-- 🗝 Compatible with hardware wallets like [Ledger](https://www.ledger.com/) for an extra layer of security.
+- **Magical UI Theme**: Dark mystical interface with golden accents and arcane purple highlights
+- **Animated Elements**: Sparkling effects and magical glow animations
+- **Responsive Design**: Beautiful interface that adapts to different screen sizes
 
-### Security First
+### 🔐 Self-Custodial Security
 
-- 🛡 Utilizes battle-proof techniques for encrypting and storing sensitive data, which are commonly used in password managers, to protect user data.
+- **User-centric approach**: Your keys belong to you and are securely stored on your device
+- **Hardware wallet support**: Compatible with [Ledger](https://www.ledger.com/) for enhanced security
+- **Battle-tested encryption**: Uses KDBX (KeePass v2) database encryption, the same standard used by password managers
 
-### Dapp Integration
+### 🌐 Dapp Integration
 
-- 🌐 Seamlessly connects with decentralized applications (dApps) across various EVM networks.
-- 💼 Supports all the latest Web3 standards.
+- **Seamless connectivity**: Connect with decentralized applications across various EVM networks
+- **Web3 standards**: Supports all the latest Web3 standards and protocols
+- **QR Code scanning**: Built-in QR code scanner for easy wallet connections
 
-### Full-Page Dashboard
+### 📊 Full-Page Dashboard
 
-- 📊 Features a comprehensive full-page dashboard within the app, providing detailed information about accounts, transactions, and assets.
-- 📈 Stay updated on your portfolio and activities within the Web3 ecosystem.
+- **Comprehensive portfolio**: Detailed information about accounts, transactions, and assets
+- **Real-time updates**: Stay updated on your portfolio and activities within the Web3 ecosystem
+- **Multi-network support**: Switch between networks effortlessly
 
-### Multi-Network Support
+### 🔗 Multi-Network Support
 
-- 🔗 Designed to be multi-network, allowing to switch between networks effortlessly.
-- 🌐 Easily manage assets and explore the diverse opportunities offered by different networks.
+- **Ethereum**: Full support for Ethereum mainnet and testnets
+- **Polygon**: Optimized for Polygon network
+- **BNB Smart Chain**: Native support for BSC
+- **Arbitrum**: Layer 2 scaling solutions
+- **All EVM networks**: Compatible with any EVM-compatible blockchain
 
-### Open Source
+### 🛡️ Security First
 
-- 📖 Committed to transparency and community-driven development. The project is open source, allowing developers to review and contribute to the codebase.
+- **Encrypted storage**: All sensitive data is encrypted using AES-256
+- **Password protection**: User-defined passphrase encryption
+- **Brute force protection**: Automatic lockout after failed attempts
+- **Secure key generation**: Cryptographic random number generation
 
-### User-Friendly Interface
+## Installation & Setup
 
-- 🖥️ The user interface is intuitive and user-friendly, making it easy for both newcomers and experienced users to navigate and utilize the wallet's features.
+### Prerequisites
 
-### Offline-first
+- Node.js (v16 or higher)
+- Yarn package manager
+- Git
 
-- 🔌 Adopts an offline-first approach by utilizing a local database as the primary source of data. The app syncs with third-party indexer APIs for enhanced functionality but can operate independently, directly interacting with the blockchain if needed.
+### Quick Start
 
-### Manifest V3 Compatibility
+1. **Clone the repository**
 
-- ✅ Fully adapted to the latest browser extension ManifestV3 API, ensuring compatibility with modern standards.
-- 🌙 "Sleep well" feature allows the extension to save resources when not in active use, improving overall performance.
+   ```bash
+   git clone https://github.com/rishabhjamwal/Magic-Craft.git
+   cd Magic-Craft
+   ```
 
-### Lightweight
+2. **Install dependencies**
 
-- ⚡️ Designed with efficiency in mind to ensure a lightweight and responsive user experience.
+   ```bash
+   yarn install
+   ```
 
-## Documentation
+3. **Build the extension**
 
-- [**General Tech Documentation**](docs/README.md)
-- [**Security Documentation**](docs/SECURITY.md)
+   ```bash
+   yarn build
+   ```
 
-You can also find documentation for specific modules within the source code.
+4. **Load in browser**
+   - Open Chrome/Edge and go to `chrome://extensions/`
+   - Enable "Developer mode"
+   - Click "Load unpacked"
+   - Select the `dist` folder from the build output
 
-## Build from source
+### Development Mode
 
-> Requires: [`Node.js >=18.12.0`](https://nodejs.org) and [`Yarn ^1`](https://yarnpkg.com)
+1. **Start development server**
 
-### Get the source code
+   ```bash
+   yarn start
+   ```
 
-```bash
-git clone git@github.com:wigwamapp/local-wigwam.git wigwam
+2. **Watch for changes**
+
+   ```bash
+   yarn dev
+   ```
+
+3. **Run tests**
+   ```bash
+   yarn test
+   ```
+
+## Development
+
+### Project Structure
+
+```
+src/
+├── app/                    # Main application code
+│   ├── components/         # React components
+│   ├── screens/           # Page components
+│   ├── hooks/             # Custom React hooks
+│   └── atoms/             # State management
+├── core/                  # Core wallet functionality
+│   ├── back/              # Background services
+│   ├── client/            # Client-side logic
+│   └── types/             # TypeScript definitions
+├── lib/                   # Utility libraries
+└── fixtures/              # Static data and configurations
 ```
 
-### Install app dependencies
+### Key Technologies
+
+- **React**: Frontend framework
+- **TypeScript**: Type-safe development
+- **Tailwind CSS**: Styling framework
+- **Jotai**: State management
+- **Ethers.js**: Ethereum interaction
+- **KDBX**: Secure data storage
+
+### Building for Production
 
 ```bash
-yarn
-```
-
-### Build an application
-
-```bash
-# for Chrome and other Chrome-based browsers
+# Build for Chrome/Edge
 yarn build
 
-# for Firefox
+# Build for Firefox
 yarn build:firefox
+
+# Build for development
+yarn build:dev
 ```
 
-### Add an application to the browser locally
+## Security
 
-1. Open `chrome://extensions/` in your browser
-2. Enable "Developer mode"
-3. Tap on "Load unpacked"
-4. Select `<your_local_wigwam_repository_dir>/dist/prod/chrome_unpacked`
+### Encryption Standards
 
-## Useful scripts
+- **AES-256**: Advanced Encryption Standard for data protection
+- **Argon2**: Memory-hard key derivation function
+- **PBKDF2**: Password-based key derivation
+- **Unique salts**: Prevents rainbow table attacks
 
-### Test
+### Security Features
 
-```bash
-  yarn test
-```
+- **Encrypted vault**: All sensitive data stored in encrypted KDBX database
+- **Session management**: Secure password session handling
+- **Memory protection**: Sensitive data cleared from memory
+- **Hardware wallet integration**: Support for Ledger and Trezor
 
-### Audit NPM dependencies
+### Best Practices
 
-```bash
-  yarn audit
-  yarn npm-audit
-```
+- Never share your seed phrase
+- Use strong, unique passwords
+- Enable hardware wallet for large holdings
+- Regularly backup your wallet
+- Keep the extension updated
 
-### Analyze bundle
+## Contributing
 
-```bash
-  yarn analyze
-```
+We welcome contributions! Please follow these steps:
 
-## Contributions
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-We welcome contributions from the community to make this project even better.
+### Development Guidelines
+
+- Follow TypeScript best practices
+- Write meaningful commit messages
+- Add tests for new features
+- Update documentation as needed
+- Follow the existing code style
 
 ## Support
 
-For any questions, issues, or assistance, please contact our support team or open an issue on GitHub.
+### Getting Help
+
+- **Documentation**: Check the `/docs` folder for detailed guides
+- **Issues**: Report bugs and request features via GitHub Issues
+- **Discussions**: Join community discussions on GitHub
+
+### Common Issues
+
+- **Extension not loading**: Ensure you're in developer mode
+- **Build errors**: Check Node.js version and dependencies
+- **Connection issues**: Verify network settings and RPC endpoints
+
+### Security Reporting
+
+If you discover a security vulnerability, please report it privately to maintainers.
+
+---
+
+**Magic Craft** - Where ancient magic meets modern Web3 technology ✨
+
+_Built with ❤️ and 🪄 for the decentralized future_

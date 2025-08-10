@@ -281,13 +281,27 @@ const Swap: FC = () => {
       hiddenUI: ["appearance", "poweredBy"],
       theme: {
         palette: {
+          primary: {
+            main: "#F1C40F", // Shimmering gold
+            light: "#F7DC6F",
+            dark: "#D4AC0D",
+          },
+          secondary: {
+            main: "#6E4B9E", // Arcane purple
+            light: "#9B7FD4",
+            dark: "#4A2C5A",
+          },
           background: {
-            paper: "#2b3037",
-            default: "#181a1f", // bg color container
+            paper: "#1A1B2F", // Deep midnight blue
+            default: "#151629", // Darker midnight variation
+          },
+          text: {
+            primary: "#C4B5D9", // Light arcane purple for text
+            secondary: "#8A7CA8", // Muted arcane purple
           },
         },
         shape: {
-          borderRadius: 10,
+          borderRadius: 12,
           borderRadiusSecondary: 10,
         },
         typography: {

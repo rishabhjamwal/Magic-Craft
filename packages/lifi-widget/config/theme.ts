@@ -51,26 +51,26 @@ declare module '@mui/material/Typography' {
 
 const palette = {
   primary: {
-    main: '#81ef6e',
-    light: lighten('#3F49E1', 0.5),
-    dark: darken('#3F49E1', 0.2),
+    main: '#F1C40F', // Shimmering gold
+    light: lighten('#F1C40F', 0.3),
+    dark: darken('#F1C40F', 0.2),
   },
   secondary: {
-    main: '#F5B5FF',
-    light: lighten('#F5B5FF', 0.5),
-    dark: darken('#F5B5FF', 0.2),
+    main: '#6E4B9E', // Arcane purple
+    light: lighten('#6E4B9E', 0.3),
+    dark: darken('#6E4B9E', 0.2),
   },
   success: {
-    main: '#0AA65B',
+    main: '#6E4B9E', // Arcane purple for success
   },
   warning: {
-    main: '#FFCC00',
+    main: '#F7DC6F', // Light gold for warnings
   },
   error: {
-    main: '#E5452F',
+    main: '#8B5A3C', // Warm brown for errors
   },
   info: {
-    main: '#297EFF',
+    main: '#9B7FD4', // Light arcane purple for info
   },
 };
 
@@ -83,7 +83,12 @@ const paletteLight = {
 
 const paletteDark = {
   background: {
-    paper: '#212121',
+    paper: '#1A1B2F', // Deep midnight blue
+    default: '#151629', // Darker midnight variation
+  },
+  text: {
+    primary: '#C4B5D9', // Light arcane purple for text
+    secondary: '#8A7CA8', // Muted arcane purple
   },
 };
 

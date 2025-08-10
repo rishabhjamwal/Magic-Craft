@@ -10,10 +10,8 @@ import { db } from "./schema";
 import { networks } from "./helpers";
 
 export async function setupFixtures() {
+  // Merge default data to the device storage
   try {
-    const allEvmNetworks =
-      process.env.NODE_ENV !== "test" ? await getAllEvmNetworks() : [];
-
     await db.transaction("rw", networks, async () => {
       const existingNetworks = await networks.toArray();
 
@@ -30,44 +28,58 @@ export async function setupFixtures() {
 
       await networks.bulkPut(mainNets);
 
-      if (process.env.NODE_ENV === "test") return;
+      // Only try to fetch additional networks in non-test environment
+      if (process.env.NODE_ENV === "test") {
+        return;
+      }
 
-      // Refresh rest
-      const allNetsMap = new Map(allEvmNetworks.map((n) => [n.chainId, n]));
+      try {
+        const allEvmNetworks = await getAllEvmNetworks();
 
-      const restNets = Array.from(extNetsMap.values()).map((net) => {
-        const evmData = allNetsMap.get(net.chainId);
+        // Refresh rest
+        const allNetsMap = new Map(allEvmNetworks.map((n) => [n.chainId, n]));
 
-        // Localhost
-        if (net.chainId === 1337) return net;
+        const restNets = Array.from(extNetsMap.values()).map((net) => {
+          const evmData = allNetsMap.get(net.chainId);
 
-        // Manually changed
-        // TODO: Better to merge
-        if (net.manuallyChanged) return net;
+          // Localhost
+          if (net.chainId === 1337) return net;
 
-        return evmData
-          ? mergeNetwork(net, {
-              chainId: evmData.chainId,
-              type: evmData.testnet ? "testnet" : "unknown",
-              chainTag: "",
-              rpcUrls: evmData.rpcUrls.filter((url) => url.startsWith("http")),
-              name: evmData.name,
-              nativeCurrency: evmData.nativeCurrency,
-              explorerUrls: evmData.explorers?.map((exp) => exp.url),
-              explorerApiUrl: evmData.explorers?.find((exp) => exp.apiUrl)
-                ?.apiUrl,
-              faucetUrls: evmData.faucets,
-              iconUrls: evmData.icon && [wrapIpfsNetIcon(evmData.icon.url)],
-              infoUrl: evmData.infoUrl,
-              position: 0,
-            })
-          : net;
-      });
+          // Manually changed
+          // TODO: Better to merge
+          if (net.manuallyChanged) return net;
 
-      await networks.bulkPut(restNets);
+          return evmData
+            ? mergeNetwork(net, {
+                chainId: evmData.chainId,
+                type: evmData.testnet ? "testnet" : "unknown",
+                chainTag: "",
+                rpcUrls: evmData.rpcUrls.filter((url) =>
+                  url.startsWith("http"),
+                ),
+                name: evmData.name,
+                nativeCurrency: evmData.nativeCurrency,
+                explorerUrls: evmData.explorers?.map((exp) => exp.url),
+                explorerApiUrl: evmData.explorers?.find((exp) => exp.apiUrl)
+                  ?.apiUrl,
+                faucetUrls: evmData.faucets,
+                iconUrls: evmData.icon && [wrapIpfsNetIcon(evmData.icon.url)],
+                infoUrl: evmData.infoUrl,
+                position: 0,
+              })
+            : net;
+        });
+
+        if (restNets.length > 0) {
+          await networks.bulkPut(restNets);
+        }
+      } catch {
+        // Ignore network fetch errors
+      }
     });
-  } catch (err) {
-    console.error(err);
+  } catch {
+    // Fallback: just add defaults without transaction
+    await networks.bulkPut(DEFAULT_NETWORKS);
   }
 }
 

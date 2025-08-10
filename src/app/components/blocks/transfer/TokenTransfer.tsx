@@ -59,7 +59,7 @@ import AssetInput from "app/components/elements/AssetInput";
 import FiatAmount from "app/components/elements/FiatAmount";
 import PrettyAmount from "app/components/elements/PrettyAmount";
 import InputLabelAction from "app/components/elements/InputLabelAction";
-import ContactAutocomplete from "app/components/elements/ContactAutocomplete";
+import ContactAutocompleteWithQR from "app/components/elements/ContactAutocompleteWithQR";
 import { ReactComponent as SendIcon } from "app/icons/send-small.svg";
 import { ReactComponent as WarningIcon } from "app/icons/circle-warning.svg";
 import { ReactComponent as ExternalLinkIcon } from "app/icons/external-link.svg";
@@ -608,7 +608,7 @@ const TransferTokenContent = memo<TransferTokenContent>(
               validate={composeValidators(required, validateAddress)}
             >
               {({ input, focus, meta }) => (
-                <ContactAutocomplete
+                <ContactAutocompleteWithQR
                   setValue={(value) => {
                     form.change("recipient", value);
                     focus?.();

@@ -8,7 +8,7 @@ import { TEvent, trackEvent } from "core/client";
 import { Page } from "app/nav";
 import { SoonTag } from "app/components/elements/SoonTag";
 import { updateAvailableAtom, pageAtom, tokenSlugAtom } from "app/atoms";
-import { ReactComponent as WigwamTitleIcon } from "app/icons/WigwamTitle.svg";
+import { ReactComponent as MagicCraftTitleIcon } from "app/icons/MagicCraftTitle.svg";
 
 import useSidebarLinks from "./Sidebar.Links";
 
@@ -19,8 +19,10 @@ const Sidebar: FC = () => {
     <nav
       className={classNames(
         "pr-6",
-        "border-r border-brand-main/[.07]",
+        "border-r border-brand-arcane/[.3]",
         "flex flex-col",
+        "relative",
+        "bg-gradient-to-b from-brand-midnight/20 to-transparent",
       )}
     >
       <Link
@@ -28,19 +30,23 @@ const Sidebar: FC = () => {
         merge={["token"]}
         className={classNames(
           "mb-5 py-5",
-          "border-b border-brand-main/[.07]",
+          "border-b border-brand-arcane/[.3]",
           "flex items-center",
           "text-2xl font-black",
+          "magiccraft-text-gold",
+          "hover:animate-shimmer transition-all duration-300",
         )}
       >
-        <WigwamTitleIcon className={classNames("ml-3 my-1 h-8 w-auto")} />
+        <div className="flex items-center relative">
+          <MagicCraftTitleIcon className={classNames("ml-3 my-1 h-8 w-auto")} />
+        </div>
       </Link>
       <SidebarBlock links={NavLinksPrimary} />
       <SidebarBlock
         links={NavLinksSecondary}
         className={classNames(
           "mt-[6.25rem] pt-4",
-          "border-t border-brand-main/[.07]",
+          "border-t border-brand-arcane/[.3]",
         )}
       />
     </nav>
