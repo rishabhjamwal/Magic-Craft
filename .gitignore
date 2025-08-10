@@ -15,7 +15,6 @@ node_modules
 /coverage
 
 # Env
-.env.*
 
 # misc
 .swc
@@ -29,3 +28,4 @@ yarn-debug.log*
 yarn-error.log*
 
 .yarn
+config.bat
